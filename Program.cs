@@ -6,37 +6,28 @@ using System.Text;
 
 using Controller;
 
-namespace Linq
+namespace Principal
 {
-    public class ProgramLinq
-    {
-        public static void Main(string[] args)
-        {
-            List<cidadeController> cidades = new List<cidadeController>();
-            cidades.Add(new cidadeController(1, "São Paulo"));
-            cidades.Add(new cidadeController(2, "Rio de Janeiro"));
-            cidades.Add(new cidadeController(3, "Belo Horizonte"));
-            cidades.Add(new cidadeController(4, "Salvador"));
-            cidades.Add(new cidadeController(5, "Curitiba"));
-            cidades.Add(new cidadeController(6, "São Paulo"));
-          
-            IEnumerable<cidadeController> city = from cidade in cidades
-                        where cidade.Nome == "São Paulo"
-                        select cidade;
+    // public class Program
+    // {
+    //     public static void Main(string[] args)
+    //     {
+    //         cidadeController cidade = new cidadeController(1, "São Paulo");
+    //         IEnumerable<Models.cidade> cidades = cidade.GetCidades();
+    //         IEnumerable<Models.cidade> cidades2 = cidade.GetCidades("São Paulo");
 
-            foreach(cidadeController cidade in city)
-            {
-                Console.WriteLine(cidade.Id);
-    
-            }
+    //         foreach (var item in cidades)
+    //         {
+    //             Console.WriteLine(item.Id + " - " + item.Nome);
+    //         }
 
-            // Carro gol = (from carro in carros
-            //             where carro.Marca == "Volkswagen"
-            //             select carro).First();
+    //         foreach (var item in cidades2)
+    //         {
+    //             Console.WriteLine(item.Id + " - " + item.Nome);
+    //         }
 
-            // int count = (from carro in carros
-            //             where carro.Marca == "Volkswagen"
-            //             select carro).Count();
-        }
-    }
+    //         Console.ReadKey();
+    //     }
+        
+    // }
 }

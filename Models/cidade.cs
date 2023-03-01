@@ -1,9 +1,5 @@
 using System;
 
-
-
-
-
 namespace Models
 {
 
@@ -13,6 +9,8 @@ namespace Models
 
         public string Nome {get; set; }
 
+        public static List<Cidade> Cidades {get; set;} = new List<Cidade>();
+        
         public Cidade(int id, string nome)
         {
             Id = id;
@@ -25,25 +23,25 @@ namespace Models
         {
             return $"Id: {Id} - Nome: {Nome}";
         }
-        public static List<Cidade> Cidades = new List<Cidade>();
+       
 
         public static void AlterarCidade(int id, string nome)
         {
-            Cidade? cidade = Cidades.Find(c => c.Id == id);
-            Cidades.Nome = nome;
+            Cidade cidade = BuscarCidade(id);
+            cidade.Nome = nome;
         }
 
-        public static void RemoverCidade(int id)
+        public static void ExcluirCidade(int id)
         {
-            Cidade? cidade = Cidades.Find(c => c.Id == id);
+            Cidade cidade = BuscarCidade(id);
             Cidades.Remove(cidade);
         }
 
-        public  BuscarCidade(int id)
+        public static Cidade BuscarCidade(int id)
         {
             Cidade? cidade = Cidades.Find(c => c.Id == id);
             if (cidade == null){
-                throw new Exception("Cidade não encontrada");
+                throw new Exception("Cidade não localizada!");
             }
             return cidade;
         }

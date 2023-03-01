@@ -1,3 +1,5 @@
+using System;
+
 namespace Models
 
 {
@@ -16,6 +18,8 @@ namespace Models
             Id = id;
             Placa = placa;
             Motorista = motorista;
+
+            Caminhoes.Add(this);
         }
 
 

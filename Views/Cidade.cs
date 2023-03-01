@@ -45,7 +45,7 @@ namespace View
 
         public static void ListarCidades() {
             Console.WriteLine("Listar cidades");
-            foreach (Models.Cidade cidade in Controller.Cidade.ListarCidades()) {
+            foreach (string cidade in Controller.Cidade.ListarCidades()) {
                 Console.WriteLine(cidade);
             }
         }

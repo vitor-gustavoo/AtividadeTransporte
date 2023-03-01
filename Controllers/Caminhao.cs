@@ -96,15 +96,12 @@ namespace Controller
             IEnumerable<Models.Caminhao> caminhoes = from caminhao in Models.Caminhao.Caminhoes
                 select caminhao;
             
-            foreach (Models.Caminhao caminhao1 in caminhoes){
-                stringCaminhoes.Add($"Id: {caminhao1.Id}, Placa: {caminhao1.Placa}, caminhão: {caminhao1.Motorista}");
+            foreach (Models.Caminhao caminhao in caminhoes){
+                stringCaminhoes.Add($"Id: {caminhao.Id}, Placa: {caminhao.Placa}, caminhão: {caminhao.Motorista}");
             }
             return stringCaminhoes;
         }
-        
-
             
-    }
-    
+    }   
 
 }

@@ -13,12 +13,12 @@ namespace Models
         private int _caminhaoId;
         public Caminhao Caminhao {get; set; }
         public string Data {get; set; }
-
+        public double Frete {get; set; }
         public double Valor {get; set; }
 
         public static List<Rota> Rotas {get; set;} = new List<Rota>();
 
-        public Rota(int id, Cidade origem, Cidade destino, Caminhao caminhao, string data)
+        public Rota(int id, Cidade origem, Cidade destino, Caminhao caminhao, string data, double valor)
         {
             Id = id;
             Origem = origem;
@@ -28,7 +28,7 @@ namespace Models
             Caminhao = caminhao;
             _caminhaoId = caminhao.Id;
             Data = data;
-            Valor = Valor;
+            Valor = valor;
 
             Rotas.Add(this);
         }
@@ -38,13 +38,14 @@ namespace Models
             return $"Id: {Id}, Origem: {Origem}, Destino: {Destino}, Caminhão: {Caminhao}, Data: {Data}";
         }
 
-        public static void AlterarRota(int id, Cidade origem, Cidade destino, Caminhao caminhao, string data)
+        public static void AlterarRota(int id, Cidade origem, Cidade destino, Caminhao caminhao, string data, double valor)
         {
             Rota rota = BuscarRota(id);
             rota.Origem = origem;
             rota.Destino = destino;
             rota.Caminhao = caminhao;
             rota.Data = data;
+            rota.Valor = valor;
         }
 
         public static void ExcluirRota(int id)
@@ -61,13 +62,6 @@ namespace Models
             }
             return rota;
         }
-    public static double MediaValor()
-        {
-            double valorRotas = (from rota in Models.Rota.Rotas
-            select rota.Valor).Average();
-            return valorRotas;
-        }
-        
 
     }
 }

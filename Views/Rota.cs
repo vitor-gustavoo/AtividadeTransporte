@@ -14,8 +14,10 @@ namespace View
             string caminhaoId = Console.ReadLine();
             Console.WriteLine("Data:");
             string data = Console.ReadLine();
+            Console.WriteLine("Valor do Frete:");
+            string valor = Console.ReadLine();
             try {
-                Controller.Rota.CadastrarRota(id, origemId, destinoId, caminhaoId, data);
+                Controller.Rota.CadastrarRota(id, origemId, destinoId, caminhaoId, data, valor);
                 Console.WriteLine("Rota cadastrada com sucesso");
             } catch (Exception e) {
                 Console.WriteLine(e.Message);
@@ -34,8 +36,10 @@ namespace View
             string caminhaoId = Console.ReadLine();
             Console.WriteLine("Data:");
             string data = Console.ReadLine();
+             Console.WriteLine("Valor do Frete:");
+            string valor = Console.ReadLine();
             try {
-                Controller.Rota.AlterarRota(id, origemId, destinoId, caminhaoId, data);
+                Controller.Rota.AlterarRota(id, origemId, destinoId, caminhaoId, data, valor);
                 Console.WriteLine("Rota alterada com sucesso");
             } catch (Exception e) {
                 Console.WriteLine(e.Message);
@@ -60,15 +64,10 @@ namespace View
                 Console.WriteLine(rota);
             }
         }
-
-        // public static void MediaValor() {
-        //     Console.WriteLine("Listar Rotas");
-        //     Console.WriteLine("Id:");
-        //      string id = Console.ReadLine();
-        //     double idConvert = int.Parse(id);
-        //     foreach (string rota in Models.Rota.MediaValor(id)) {
-        //         Console.WriteLine(rota);
-        //     }
-        // }       
+         public static void ExibeMediaFrete()
+        {
+            double media = Controller.Rota.MediaDeFrete();
+            Console.WriteLine($"A média (R$) de todos os fretes é: {media}");
+        }
     }
 }

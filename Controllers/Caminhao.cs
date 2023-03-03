@@ -90,6 +90,51 @@ namespace Controller
             Models.Caminhao.BuscarCaminhao(idConvert);
         }
 
+        public static void TotalRotasCaminhao(string id) 
+        {
+            int idConvert = 0;
+            try
+            {
+                idConvert = int.Parse(id);
+            }
+            catch (Exception)
+            {
+                throw new Exception("Id Inválido");
+            }
+            Models.Caminhao.CalculaRota(idConvert);
+           
+        }
+        public static int CalculaRota(int id)
+        {
+            int qtdCaminhoes =(from caminhao in Models.Caminhao.Caminhoes
+                where caminhao.Id == id join rota in Models.Rota.Rotas on caminhao.Id equals rota.Caminhao.Id
+                select caminhao).Count();
+
+                if(qtdCaminhoes == 0) {
+                    throw new Exception("Total de rotas não encontrado");
+                }
+                else
+                {
+                   return qtdCaminhoes;
+                }     
+        }
+              public static double CalculaRotaEmReais(int id)
+        {
+            double valorRotas = (from rota in Models.Rota.Rotas
+                where rota.Caminhao.Id == id join caminhao in Models.Caminhao.Caminhoes on rota.Caminhao.Id equals caminhao.Id
+                select rota.Valor).Sum();
+           
+                if(valorRotas == 0) {
+                    throw new Exception("Não existe valor de rotas para esse caminhão");
+                }
+                else
+                {
+                   return valorRotas;
+                }
+        }
+
+     
+
         public static List<string> ListarCaminhoes()
         {
             List<string> stringCaminhoes = new List<string>();

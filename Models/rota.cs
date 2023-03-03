@@ -14,6 +14,8 @@ namespace Models
         public Caminhao Caminhao {get; set; }
         public string Data {get; set; }
 
+        public double Valor {get; set; }
+
         public static List<Rota> Rotas {get; set;} = new List<Rota>();
 
         public Rota(int id, Cidade origem, Cidade destino, Caminhao caminhao, string data)
@@ -26,6 +28,7 @@ namespace Models
             Caminhao = caminhao;
             _caminhaoId = caminhao.Id;
             Data = data;
+            Valor = Valor;
 
             Rotas.Add(this);
         }
@@ -58,7 +61,13 @@ namespace Models
             }
             return rota;
         }
-
+    public static double MediaValor()
+        {
+            double valorRotas = (from rota in Models.Rota.Rotas
+            select rota.Valor).Average();
+            return valorRotas;
+        }
+        
 
     }
 }

@@ -19,6 +19,8 @@ namespace Principal
                 Console.WriteLine("10 - Alterar Cidade");
                 Console.WriteLine("11 - Excluir Cidade");
                 Console.WriteLine("12 - Listar Cidades");
+                Console.WriteLine("13 - Calcular Rota");
+                Console.WriteLine("14 - Calcular Rota em Reais");
                 Console.WriteLine("0 - Sair");
                 Console.WriteLine("Opção:");
                 opcao = int.Parse(Console.ReadLine());
@@ -62,6 +64,12 @@ namespace Principal
                         break;
                     case 12:
                         View.Cidade.ListarCidades();
+                        break;
+                    case 13:
+                        View.Caminhao.CalculaRota();
+                        break;
+                    case 14:
+                        View.Caminhao.CalculaRotaEmReais();
                         break;
                     default:
                         Console.WriteLine("Opção inválida");

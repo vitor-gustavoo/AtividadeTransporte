@@ -49,12 +49,39 @@ namespace View
             }
         }
 
-        public static void ListarCaminhoes() {
+        public static void ListarCaminhoes() 
+        {
             Console.WriteLine("Listar caminhões");
             foreach (string caminhao in Controller.Caminhao.ListarCaminhoes()) {
                 Console.WriteLine(caminhao);
             }
 
+        }
+
+        public static void CalculaRota()
+        {
+            Console.WriteLine("Calcular Rota");
+            Console.WriteLine("Id:");
+            string id = Console.ReadLine();
+            int idConvert = int.Parse(id);
+            try {
+                Console.WriteLine($"Valor: {Controller.Caminhao.CalculaRota(idConvert)}");
+            } catch (Exception e) {
+                Console.WriteLine($"Erro na busca da quantidade de rotas: {e.Message}");
+            }
+        }
+
+        public static void CalculaRotaEmReais()
+        {
+            Console.WriteLine("Calcular o valor de  Rotas");
+            Console.WriteLine("Id:");
+            string id = Console.ReadLine();
+            int idConvert = int.Parse(id);
+            try {
+                Console.WriteLine($"Valor: {Controller.Caminhao.CalculaRotaEmReais(idConvert)}");
+            } catch (Exception e) {
+                Console.WriteLine($"Erro ao calcular valor: {e.Message}");
+            }
         }
     }
 }

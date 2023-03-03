@@ -11,6 +11,8 @@ namespace Models
 
         public string Motorista { get; set;}
 
+        public int TotalRota {get; set;}
+
          public static List<Caminhao> Caminhoes {get; set;} = new List<Caminhao>();
 
         public Caminhao(int id, string placa, string motorista)
@@ -18,6 +20,7 @@ namespace Models
             Id = id;
             Placa = placa;
             Motorista = motorista;
+
 
             Caminhoes.Add(this);
         }
@@ -47,7 +50,15 @@ namespace Models
             if(caminhao == null){
                 throw new Exception("Caminhão não localizado!");
             }
-             return caminhao;
+            return caminhao;
+        }
+
+        public static int CalculaRota(int id)
+        {
+           int TotalRotas = (from caminhao in Caminhoes
+            where caminhao.Id == id
+            select caminhao.TotalRota).Sum();
+            return TotalRotas;
         }
     }   
 

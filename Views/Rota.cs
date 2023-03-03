@@ -59,6 +59,16 @@ namespace View
             foreach (string rota in Controller.Rota.ListarRotas()) {
                 Console.WriteLine(rota);
             }
-        }    
+        }
+
+        // public static void MediaValor() {
+        //     Console.WriteLine("Listar Rotas");
+        //     Console.WriteLine("Id:");
+        //      string id = Console.ReadLine();
+        //     double idConvert = int.Parse(id);
+        //     foreach (string rota in Models.Rota.MediaValor(id)) {
+        //         Console.WriteLine(rota);
+        //     }
+        // }       
     }
 }
